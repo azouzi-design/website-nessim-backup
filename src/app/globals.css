@@ -2,14 +2,86 @@
 
 :root {
   --background: #ffffff;
+  --background-secondary: #f9f9f9;
   --foreground: #171717;
+  --foreground-secondary: #333333;
+  --stroke: #ebebeb;
+  --primary-blue: #0a66c2;
+
+  --accent-bg-purple: #eddcf9;
+  --accent-bg-teal: #bef4eb;
+  --accent-bg-green: #c6f1c7;
+  --accent-bg-blue: #cce6ff;
+  --accent-bg-amber: #fef0cd;
+  --accent-bg-red: #fdd8d8;
+
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-40: 40px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 2px 4px 0 rgb(23 23 23 / 0.03);
+  --shadow-md: 0 3px 5px 0 rgb(23 23 23 / 0.05);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-stroke: var(--stroke);
+  --color-primary-blue: var(--primary-blue);
+
+  --color-accent-bg-purple: var(--accent-bg-purple);
+  --color-accent-bg-teal: var(--accent-bg-teal);
+  --color-accent-bg-green: var(--accent-bg-green);
+  --color-accent-bg-blue: var(--accent-bg-blue);
+  --color-accent-bg-amber: var(--accent-bg-amber);
+  --color-accent-bg-red: var(--accent-bg-red);
+
+  --radius-full: var(--radius-full);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  --text-h1: 48px;
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -2px;
+  --text-h1--font-weight: 600;
+
+  --text-h2: 32px;
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -1.5px;
+  --text-h2--font-weight: 600;
+
+  --text-h3: 24px;
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -1px;
+  --text-h3--font-weight: 600;
+
+  --text-h4: 16px;
+  --text-h4--line-height: 1.2;
+  --text-h4--letter-spacing: -0.5px;
+  --text-h4--font-weight: 600;
+
+  --text-body: 14px;
+  --text-body--line-height: 1;
+  --text-body--letter-spacing: 0px;
+  --text-body--font-weight: 400;
+
+  --text-button: 14px;
+  --text-button--line-height: 1;
+  --text-button--letter-spacing: -0.5px;
+  --text-button--font-weight: 500;
+
+  --text-caption: 12px;
+  --text-caption--line-height: 1;
+  --text-caption--letter-spacing: 0px;
+  --text-caption--font-weight: 400;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +92,14 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading), serif;
 }
