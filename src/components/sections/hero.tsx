@@ -37,8 +37,9 @@ export default function Hero() {
       <Image
         src="/hero/illustration.svg"
         alt=""
-        fill
-        className="absolute inset-x-0 -top-15 object-cover object-top pointer-events-none select-none"
+        width={800}
+        height={801}
+        className="absolute left-1/2 -top-15 -translate-x-1/2 pointer-events-none select-none"
         priority
       />
       <div className="relative flex flex-col gap-16 items-center max-w-[1000px] w-full pb-13 px-5">
