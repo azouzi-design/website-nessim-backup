@@ -16,17 +16,18 @@ export default function Navbar() {
           <a
             key={link.href}
             href={link.href}
-            className="text-body text-foreground whitespace-nowrap"
+            className="text-body text-foreground whitespace-nowrap transition-opacity duration-150 hover:opacity-90 active:opacity-70"
           >
             {link.label}
           </a>
         ))}
         <div className="flex gap-2 items-center">
           <a
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/in/nessim-bozrati/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
+            className="transition-opacity duration-150 hover:opacity-90 active:opacity-70"
           >
             <Image
               src="/hero/icon-linkedin.svg"
@@ -35,7 +36,13 @@ export default function Navbar() {
               height={12}
             />
           </a>
-          <a href="#contact" aria-label="Bookmark">
+          <a
+            href="https://substack.com/@nessimbozrati"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Substack"
+            className="transition-opacity duration-150 hover:opacity-90 active:opacity-70"
+          >
             <Image
               src="/hero/icon-bookmark.svg"
               alt=""

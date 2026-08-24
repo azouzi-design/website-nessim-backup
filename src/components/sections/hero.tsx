@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Navbar from "@/components/navbar";
+import SpinningGlobe from "@/components/spinning-globe";
 
 const pills = [
   { icon: "/hero/icon-grow.svg", label: "grow" },
@@ -34,32 +35,28 @@ export default function Hero() {
       id="home"
       className="relative flex flex-col items-center overflow-hidden"
     >
-      <Image
-        src="/hero/illustration.svg"
-        alt=""
-        width={800}
-        height={801}
-        className="absolute left-1/2 -top-15 -translate-x-1/2 pointer-events-none select-none"
-        priority
-      />
+      <SpinningGlobe />
       <div className="relative flex flex-col gap-16 items-center max-w-[1000px] w-full pb-13 px-5">
         <Navbar />
 
         <div className="flex flex-col gap-25 items-center w-full">
           <div className="flex flex-col gap-13 items-center max-w-[632px]">
             <div className="flex flex-col items-center gap-3">
-              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 font-heading text-h1 text-foreground text-center">
-                <span>Nessim</span>
-                <span className="inline-block h-11 w-[71px] overflow-hidden rounded-full align-middle">
-                  <Image
-                    src="/hero/avatar.png"
-                    alt=""
-                    width={142}
-                    height={88}
-                    className="h-full w-full object-cover"
-                  />
-                </span>
-                <span>is a growth partner that helps founders</span>
+              <div className="flex flex-col items-center gap-y-2 font-heading text-h1 text-foreground text-center">
+                <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+                  <span>Nessim</span>
+                  <span className="inline-block h-11 w-[71px] overflow-hidden rounded-full align-middle">
+                    <Image
+                      src="/hero/avatar.png"
+                      alt=""
+                      width={142}
+                      height={88}
+                      className="h-full w-full object-cover"
+                    />
+                  </span>
+                  <span>is a growth</span>
+                </div>
+                <span>partner that helps founders</span>
               </div>
               <div className="flex gap-1 items-center justify-center flex-wrap">
                 {pills.map((pill) => (
@@ -68,9 +65,11 @@ export default function Hero() {
                     className="flex gap-2 h-13 items-center justify-center px-4 rounded-full bg-background shadow-sm"
                   >
                     <Image src={pill.icon} alt="" width={32} height={32} />
-                    <span className="font-heading text-[44px] leading-[1.1] tracking-[-0.88px] font-semibold text-foreground">
-                      {pill.label}
-                    </span>
+                    <div className="flex items-center justify-center pb-2">
+                      <span className="font-heading text-[44px] leading-[1.1] tracking-[-0.88px] font-semibold text-foreground">
+                        {pill.label}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -78,8 +77,10 @@ export default function Hero() {
 
             <div className="flex gap-3 items-center">
               <a
-                href="#contact"
-                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-foreground w-[200px]"
+                href="https://cal.com/nessim-bozrati-nea7ld/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-foreground w-[200px] transition-opacity duration-150 hover:opacity-90 active:opacity-70"
               >
                 <Image
                   src="/hero/icon-book-call.svg"
@@ -92,8 +93,10 @@ export default function Hero() {
                 </span>
               </a>
               <a
-                href="#contact"
-                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-primary-blue w-[200px]"
+                href="https://www.linkedin.com/in/nessim-bozrati/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-primary-blue w-[200px] transition-opacity duration-150 hover:opacity-90 active:opacity-70"
               >
                 <Image
                   src="/hero/icon-send-dm.svg"
