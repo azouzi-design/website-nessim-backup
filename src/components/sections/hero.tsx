@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Navbar from "@/components/navbar";
 import SpinningGlobe from "@/components/spinning-globe";
+import RevealOnView from "@/components/reveal-on-view";
 
 const pills = [
   { icon: "/hero/icon-grow.svg", label: "grow" },
@@ -45,7 +46,7 @@ export default function Hero() {
               <div className="flex flex-col items-center gap-y-2 font-heading text-h1 text-foreground text-center">
                 <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
                   <span>Nessim</span>
-                  <span className="inline-block h-11 w-[71px] overflow-hidden rounded-full align-middle">
+                  <RevealOnView className="inline-block h-11 w-[71px] overflow-hidden rounded-full align-middle">
                     <Image
                       src="/hero/avatar.png"
                       alt=""
@@ -53,24 +54,23 @@ export default function Hero() {
                       height={88}
                       className="h-full w-full object-cover"
                     />
-                  </span>
+                  </RevealOnView>
                   <span>is a growth</span>
                 </div>
                 <span>partner that helps founders</span>
               </div>
               <div className="flex gap-1 items-center justify-center flex-wrap">
-                {pills.map((pill) => (
-                  <div
-                    key={pill.label}
-                    className="flex gap-2 h-13 items-center justify-center px-4 rounded-full bg-background shadow-sm"
-                  >
-                    <Image src={pill.icon} alt="" width={32} height={32} />
-                    <div className="flex items-center justify-center pb-2">
-                      <span className="font-heading text-[44px] leading-[1.1] tracking-[-0.88px] font-semibold text-foreground">
-                        {pill.label}
-                      </span>
+                {pills.map((pill, index) => (
+                  <RevealOnView key={pill.label} delayMs={index * 150}>
+                    <div className="flex gap-2 h-13 items-center justify-center px-4 rounded-full bg-background shadow-sm">
+                      <Image src={pill.icon} alt="" width={32} height={32} />
+                      <div className="flex items-center justify-center pb-2">
+                        <span className="font-heading text-[44px] leading-[1.1] tracking-[-0.88px] font-semibold text-foreground">
+                          {pill.label}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </RevealOnView>
                 ))}
               </div>
             </div>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SpinningGlobe from "@/components/spinning-globe";
+import RevealOnView from "@/components/reveal-on-view";
 
 type Chip = { label: string; className: string };
 
@@ -81,16 +82,18 @@ function ChipRow({ chips }: { chips: Chip[] }) {
   );
 }
 
-function ServiceCard({ service }: { service: Service }) {
+function ServiceCard({ service, delayMs = 0 }: { service: Service; delayMs?: number }) {
   return (
-    <div className="flex flex-col gap-10 items-center px-8 py-6 rounded-xl bg-background">
+    <div className="group flex flex-col gap-10 items-center px-8 py-6 rounded-xl bg-background cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md hover:opacity-80 active:-translate-y-0.5 active:opacity-50">
       <ChipRow chips={service.chips} />
-      <Image
-        src={service.illustration}
-        alt=""
-        width={service.illustrationWidth}
-        height={120}
-      />
+      <RevealOnView delayMs={delayMs} variant="bounce">
+        <Image
+          src={service.illustration}
+          alt=""
+          width={service.illustrationWidth}
+          height={120}
+        />
+      </RevealOnView>
       <div className="flex flex-col gap-3 items-center w-full">
         <div className="flex gap-1 items-center justify-center">
           <h4 className="font-heading text-h4 text-foreground whitespace-nowrap">
@@ -101,6 +104,7 @@ function ServiceCard({ service }: { service: Service }) {
             alt=""
             width={16}
             height={16}
+            className="transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           />
         </div>
         <p className="text-body text-foreground-secondary text-center">
@@ -121,12 +125,12 @@ export default function Services() {
 
         <div className="flex flex-col gap-2 items-center w-full">
           <div className="grid grid-cols-2 gap-2 w-full">
-            {services.map((service) => (
-              <ServiceCard key={service.title} service={service} />
+            {services.map((service, index) => (
+              <ServiceCard key={service.title} service={service} delayMs={index * 100} />
             ))}
           </div>
 
-          <div className="flex flex-col gap-5 items-center w-full h-[252px] px-4 py-6 rounded-xl bg-background overflow-hidden">
+          <div className="group flex flex-col gap-5 items-center w-full h-[252px] px-4 py-6 rounded-xl bg-background overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md hover:opacity-80 active:-translate-y-0.5 active:opacity-50">
             <ChipRow
               chips={[
                 { label: "$2,400", className: "bg-stroke text-foreground" },
@@ -143,6 +147,7 @@ export default function Services() {
                   alt=""
                   width={16}
                   height={16}
+                  className="transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
               </div>
               <p className="text-body text-foreground-secondary text-center max-w-[494px]">
@@ -151,9 +156,9 @@ export default function Services() {
                 together
               </p>
             </div>
-            <div className="relative w-full">
+            <RevealOnView delayMs={400} variant="bounce" className="relative w-full">
               <SpinningGlobe positionClassName="top-[-28px]" />
-            </div>
+            </RevealOnView>
           </div>
         </div>
       </div>

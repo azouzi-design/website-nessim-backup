@@ -1,5 +1,6 @@
 import Image from "next/image";
 import CopyEmailButton from "@/components/copy-email-button";
+import CopyrightYear from "@/components/copyright-year";
 
 export default function Contact() {
   return (
@@ -73,7 +74,7 @@ export default function Contact() {
           <div className="flex flex-col items-start w-full rounded-2xl overflow-hidden shadow-md">
             <div className="relative w-full aspect-[1200/328]">
               <Image
-                src="/contact/testimonial-photo.jpg"
+                src="/contact/testimonial-photo-v2.jpg"
                 alt=""
                 fill
                 className="object-cover"
@@ -94,7 +95,7 @@ export default function Contact() {
 
         <div className="flex h-[50px] items-center justify-center px-2.5 py-4 w-full">
           <p className="text-body text-foreground-secondary text-center whitespace-nowrap">
-            ©2026 Nessim Bozrati
+            ©<CopyrightYear /> Nessim Bozrati
           </p>
         </div>
       </div>
