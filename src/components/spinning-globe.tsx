@@ -7,12 +7,14 @@ const meridians = Array.from({ length: MERIDIAN_COUNT }, (_, i) => (180 / MERIDI
 
 export default function SpinningGlobe({
   positionClassName = "-top-15 -mt-15",
+  className = "",
 }: {
   positionClassName?: string;
+  className?: string;
 }) {
   return (
     <div
-      className={`absolute left-1/2 -translate-x-1/2 w-[800px] h-[800px] overflow-hidden opacity-70 pointer-events-none select-none [perspective:2200px] ${positionClassName}`}
+      className={`absolute left-1/2 -translate-x-1/2 w-[800px] h-[800px] overflow-hidden opacity-70 pointer-events-none select-none [perspective:2200px] ${positionClassName} ${className}`}
     >
       <div
         className="absolute [transform-style:preserve-3d]"

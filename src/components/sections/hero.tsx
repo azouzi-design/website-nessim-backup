@@ -36,7 +36,7 @@ export default function Hero() {
       id="home"
       className="relative flex flex-col items-center overflow-hidden"
     >
-      <SpinningGlobe />
+      <SpinningGlobe className="max-tablet:scale-[0.75]" />
       <div className="relative flex flex-col gap-16 items-center max-w-[1000px] w-full pb-13 px-5">
         <Navbar />
 
@@ -49,7 +49,7 @@ export default function Hero() {
                   <RevealOnView
                     variant="spring"
                     delayMs={0}
-                    className="inline-block h-11 w-[71px] overflow-hidden rounded-full align-middle"
+                    className="inline-block h-13 w-[84px] max-tablet:h-11 max-tablet:w-[71px] max-mobile:h-9 max-mobile:w-[58px] overflow-hidden rounded-full align-middle"
                   >
                     <Image
                       src="/hero/avatar.png"
@@ -70,9 +70,15 @@ export default function Hero() {
                     variant="spring"
                     delayMs={150 + index * 150}
                   >
-                    <div className="flex gap-2 h-13 items-center justify-center px-4 rounded-full bg-background shadow-sm">
-                      <Image src={pill.icon} alt="" width={32} height={32} />
-                      <div className="flex items-center justify-center pb-2">
+                    <div className="flex gap-2 h-13 max-tablet:h-11 max-mobile:h-9 items-center justify-center px-4 rounded-full bg-background shadow-sm">
+                      <Image
+                        src={pill.icon}
+                        alt=""
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 max-tablet:w-7 max-tablet:h-7 max-mobile:w-6 max-mobile:h-6"
+                      />
+                      <div className="flex items-center justify-center pb-2 max-tablet:pb-1.5 max-mobile:pb-1">
                         <span className="font-heading text-[40px] max-tablet:text-[34px] max-mobile:text-[28px] leading-[1.1] tracking-[-0.88px] max-tablet:tracking-[-0.75px] max-mobile:tracking-[-0.6px] font-semibold text-foreground">
                           {pill.label}
                         </span>
@@ -83,12 +89,12 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="flex gap-3 items-center flex-wrap justify-center max-mobile:flex-col max-mobile:w-full">
+            <div className="flex gap-3 items-center flex-wrap justify-center">
               <a
                 href="https://cal.com/nessim-bozrati-nea7ld/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-foreground w-[200px] max-mobile:w-full transition-opacity duration-150 hover:opacity-90 active:opacity-70"
+                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-foreground w-[200px] max-mobile:w-[144px] transition-opacity duration-150 hover:opacity-90 active:opacity-70"
               >
                 <Image
                   src="/hero/icon-book-call.svg"
@@ -104,7 +110,7 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/nessim-bozrati/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-primary-blue w-[200px] max-mobile:w-full transition-opacity duration-150 hover:opacity-90 active:opacity-70"
+                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-primary-blue w-[200px] max-mobile:w-[144px] transition-opacity duration-150 hover:opacity-90 active:opacity-70"
               >
                 <Image
                   src="/hero/icon-send-dm.svg"

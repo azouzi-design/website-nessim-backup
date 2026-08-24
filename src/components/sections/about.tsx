@@ -43,34 +43,45 @@ export default function About() {
           </div>
         </div>
 
-        <div className="group flex items-center justify-center w-full overflow-hidden rounded-xl max-mobile:scale-[0.55]">
-          {gallery.map((photo, index) => (
-            <div
-              key={photo.src}
-              className={`flex items-center justify-center shrink-0 w-[var(--wrapper-w)] group-hover:w-[var(--img-w)] transition-[margin,width] duration-500 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] ${
-                index === gallery.length - 1 ? "" : "mr-[-48px] group-hover:mr-1"
-              }`}
-              style={{
-                "--wrapper-w": `${photo.wrapperWidth}px`,
-                "--img-w": `${photo.imgWidth}px`,
-                height: photo.wrapperHeight,
-              } as CSSProperties}
-            >
+        <div className="group flex items-center justify-center w-full overflow-hidden rounded-xl">
+          <div className="flex flex-col gap-2 items-center max-mobile:scale-[0.7] tablet:flex-row tablet:gap-0">
+            {[gallery.slice(0, 3), gallery.slice(3, 6)].map((row, rowIndex) => (
               <div
-                className="rotate-[var(--rotate)] group-hover:rotate-0 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)]"
-                style={{ "--rotate": `${photo.rotate}deg` } as CSSProperties}
+                key={rowIndex}
+                className="flex gap-2 items-center justify-center tablet:contents"
               >
-                <Image
-                  src={photo.src}
-                  alt=""
-                  width={photo.imgWidth}
-                  height={160}
-                  className="h-40 rounded-xl object-cover"
-                  style={{ width: photo.imgWidth }}
-                />
+                {row.map((photo, localIndex) => {
+                  const index = rowIndex * 3 + localIndex;
+                  return (
+                    <div
+                      key={photo.src}
+                      className={`flex items-center justify-center shrink-0 h-auto tablet:h-[var(--wrapper-h)] tablet:w-[var(--wrapper-w)] tablet:group-hover:w-[var(--img-w)] transition-[margin,width] duration-500 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] ${
+                        index === gallery.length - 1 ? "" : "tablet:mr-[-48px] tablet:group-hover:mr-1"
+                      }`}
+                      style={{
+                        "--wrapper-w": `${photo.wrapperWidth}px`,
+                        "--wrapper-h": `${photo.wrapperHeight}px`,
+                        "--img-w": `${photo.imgWidth}px`,
+                      } as CSSProperties}
+                    >
+                      <div
+                        className="tablet:rotate-[var(--rotate)] tablet:group-hover:rotate-0 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)]"
+                        style={{ "--rotate": `${photo.rotate}deg` } as CSSProperties}
+                      >
+                        <Image
+                          src={photo.src}
+                          alt=""
+                          width={photo.imgWidth}
+                          height={160}
+                          className="w-[var(--img-w)] h-40 rounded-xl object-cover"
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="relative w-full max-w-[600px] aspect-[600/450]">

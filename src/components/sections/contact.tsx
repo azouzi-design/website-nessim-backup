@@ -12,7 +12,7 @@ export default function Contact() {
               href="https://cal.com/nessim-bozrati-nea7ld/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-foreground w-[200px] transition-opacity duration-150 hover:opacity-90 active:opacity-70"
+              className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-foreground w-[200px] max-mobile:w-[144px] transition-opacity duration-150 hover:opacity-90 active:opacity-70"
             >
               <Image
                 src="/hero/icon-book-call.svg"
@@ -28,7 +28,7 @@ export default function Contact() {
               href="https://www.linkedin.com/in/nessim-bozrati/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-primary-blue w-[200px] transition-opacity duration-150 hover:opacity-90 active:opacity-70"
+              className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-primary-blue w-[200px] max-mobile:w-[144px] transition-opacity duration-150 hover:opacity-90 active:opacity-70"
             >
               <Image
                 src="/hero/icon-send-dm.svg"
