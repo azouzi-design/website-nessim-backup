@@ -124,7 +124,7 @@ export default function Services() {
         </h2>
 
         <div className="flex flex-col gap-2 items-center w-full">
-          <div className="grid grid-cols-2 gap-2 w-full">
+          <div className="grid grid-cols-2 max-mobile:grid-cols-1 gap-2 w-full">
             {services.map((service, index) => (
               <ServiceCard key={service.title} service={service} delayMs={index * 100} />
             ))}

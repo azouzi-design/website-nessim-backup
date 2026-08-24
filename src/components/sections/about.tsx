@@ -26,7 +26,7 @@ export default function About() {
           <h2 className="font-heading text-h2 text-foreground whitespace-nowrap">
             Hi, I&rsquo;m Nessim Bozrati
           </h2>
-          <div className="text-body text-foreground-secondary w-[420px]">
+          <div className="text-body text-foreground-secondary w-[420px] max-mobile:w-full">
             <p className="mb-4">
               A growth operator and builder for early-stage founders..
             </p>
@@ -43,7 +43,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="group flex items-center justify-center w-full overflow-hidden rounded-xl">
+        <div className="group flex items-center justify-center w-full overflow-hidden rounded-xl max-mobile:scale-[0.55]">
           {gallery.map((photo, index) => (
             <div
               key={photo.src}
@@ -73,29 +73,27 @@ export default function About() {
           ))}
         </div>
 
-        <div className="relative w-[600px] h-[450px]">
+        <div className="relative w-full max-w-[600px] aspect-[600/450]">
           <div
-            className="absolute top-0 left-[21px] rounded-xl border border-stroke shadow-md overflow-hidden"
-            style={{ width: 543, height: 426, transform: "rotate(-2deg)" }}
+            className="absolute top-0 left-[3.5%] rounded-xl border border-stroke shadow-md overflow-hidden"
+            style={{ width: "90.5%", height: "94.67%", transform: "rotate(-2deg)" }}
           >
             <Image
               src="/about/mention-screenshot.jpg"
               alt="VC4A mentor profile screenshot"
-              width={543}
-              height={426}
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
           <div
             className="absolute left-0 rounded-xl border border-stroke shadow-md overflow-hidden"
-            style={{ top: 94, width: 600, height: 214 }}
+            style={{ top: "20.89%", width: "100%", height: "47.56%" }}
           >
             <Image
               src="/about/mention-card.jpg"
               alt="Nessim Bozrati mentor mention"
-              width={600}
-              height={214}
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         </div>

@@ -22,6 +22,9 @@
 }
 
 @theme inline {
+  --breakpoint-tablet: 920px;
+  --breakpoint-mobile: 500px;
+
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
@@ -131,4 +134,39 @@ h5,
 h6,
 p {
   text-wrap: balance;
+}
+
+/* Responsive typography — H4, body, button, and caption stay fixed across breakpoints */
+@media (max-width: 920px) {
+  .text-h1 {
+    font-size: 40px;
+    letter-spacing: -1.6px;
+  }
+
+  .text-h2 {
+    font-size: 28px;
+    letter-spacing: -1.3px;
+  }
+
+  .text-h3 {
+    font-size: 22px;
+    letter-spacing: -0.9px;
+  }
+}
+
+@media (max-width: 500px) {
+  .text-h1 {
+    font-size: 32px;
+    letter-spacing: -1.2px;
+  }
+
+  .text-h2 {
+    font-size: 24px;
+    letter-spacing: -1px;
+  }
+
+  .text-h3 {
+    font-size: 20px;
+    letter-spacing: -0.7px;
+  }
 }

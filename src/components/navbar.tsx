@@ -11,7 +11,7 @@ const navLinks = [
 export default function Navbar() {
   return (
     <nav className="flex flex-col items-center px-2.5 py-5 w-full">
-      <div className="flex gap-8 items-center justify-center w-full">
+      <div className="flex flex-wrap gap-x-8 gap-y-2 max-mobile:gap-x-4 items-center justify-center w-full">
         {navLinks.map((link) => (
           <a
             key={link.href}

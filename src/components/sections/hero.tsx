@@ -73,7 +73,7 @@ export default function Hero() {
                     <div className="flex gap-2 h-13 items-center justify-center px-4 rounded-full bg-background shadow-sm">
                       <Image src={pill.icon} alt="" width={32} height={32} />
                       <div className="flex items-center justify-center pb-2">
-                        <span className="font-heading text-[40px] leading-[1.1] tracking-[-0.88px] font-semibold text-foreground">
+                        <span className="font-heading text-[40px] max-tablet:text-[34px] max-mobile:text-[28px] leading-[1.1] tracking-[-0.88px] max-tablet:tracking-[-0.75px] max-mobile:tracking-[-0.6px] font-semibold text-foreground">
                           {pill.label}
                         </span>
                       </div>
@@ -83,12 +83,12 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-3 items-center flex-wrap justify-center max-mobile:flex-col max-mobile:w-full">
               <a
                 href="https://cal.com/nessim-bozrati-nea7ld/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-foreground w-[200px] transition-opacity duration-150 hover:opacity-90 active:opacity-70"
+                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-foreground w-[200px] max-mobile:w-full transition-opacity duration-150 hover:opacity-90 active:opacity-70"
               >
                 <Image
                   src="/hero/icon-book-call.svg"
@@ -104,7 +104,7 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/nessim-bozrati/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-primary-blue w-[200px] transition-opacity duration-150 hover:opacity-90 active:opacity-70"
+                className="flex gap-2 h-10 items-center justify-center px-3 rounded-xl bg-primary-blue w-[200px] max-mobile:w-full transition-opacity duration-150 hover:opacity-90 active:opacity-70"
               >
                 <Image
                   src="/hero/icon-send-dm.svg"
@@ -120,7 +120,7 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col gap-2 items-start w-full">
-            <div className="flex gap-2 h-[140px] items-stretch w-full">
+            <div className="grid grid-cols-4 max-mobile:grid-cols-2 gap-2 h-[140px] max-mobile:h-auto items-stretch w-full">
               {stats.map((stat) => (
                 <div
                   key={stat.label}
@@ -136,22 +136,22 @@ export default function Hero() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-6 items-center justify-center h-[200px] w-full p-6 rounded-xl bg-background">
+            <div className="flex flex-col gap-6 items-center justify-center h-[200px] max-mobile:h-auto max-mobile:py-8 w-full p-6 rounded-xl bg-background">
               <p className="font-heading text-h3 text-foreground text-center max-w-[786px]">
                 Nessim helped us find a clearer voice for the brand. The
                 refresh made everything feel warmer, more consistent and
                 easier for customers to understand.
               </p>
-              <p className="text-body text-foreground-secondary whitespace-nowrap">
+              <p className="text-body text-foreground-secondary whitespace-nowrap max-mobile:whitespace-normal max-mobile:text-center">
                 Sabreen Morsey — CEO @ Farinas Marketing Services
               </p>
             </div>
 
-            <div className="flex gap-2 h-[140px] items-center w-full">
+            <div className="flex flex-wrap gap-2 h-[140px] max-mobile:h-auto items-center w-full">
               {partners.map((logo) => (
                 <div
                   key={logo.alt + logo.src}
-                  className="flex flex-1 h-full items-center justify-center px-1 py-4 rounded-xl bg-background"
+                  className="flex flex-1 h-full max-mobile:h-[70px] max-mobile:flex-none max-mobile:basis-[calc((100%-16px)/3)] items-center justify-center px-1 py-4 rounded-xl bg-background"
                 >
                   <Image
                     src={logo.src}

@@ -7,7 +7,7 @@ export default function Contact() {
     <section id="contact" className="flex flex-col items-center">
       <div className="flex flex-col items-center max-w-[1000px] w-full pt-13 px-5">
         <div className="flex flex-col gap-16 items-start w-full">
-          <div className="flex gap-1.5 h-10 items-center justify-center w-full">
+          <div className="flex flex-wrap gap-2 h-10 max-mobile:h-auto items-center justify-center w-full">
             <a
               href="https://cal.com/nessim-bozrati-nea7ld/30min"
               target="_blank"
@@ -80,13 +80,13 @@ export default function Contact() {
                 className="object-cover"
               />
             </div>
-            <div className="flex flex-col gap-6 h-[200px] items-center justify-center p-6 w-full bg-foreground">
+            <div className="flex flex-col gap-6 h-[200px] max-mobile:h-auto max-mobile:py-8 items-center justify-center p-6 w-full bg-foreground">
               <p className="font-heading text-h3 text-background text-center max-w-[786px]">
                 Nessim helped us find a clearer voice for the brand. The
                 refresh made everything feel warmer, more consistent and
                 easier for customers to understand.
               </p>
-              <p className="text-body text-background-secondary whitespace-nowrap">
+              <p className="text-body text-background-secondary whitespace-nowrap max-mobile:whitespace-normal max-mobile:text-center">
                 Sabreen Morsey — CEO @ Farinas Marketing Services
               </p>
             </div>
