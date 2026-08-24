@@ -24,8 +24,10 @@ const switzer = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://website-nessim.vercel.app"),
   title: "Nessim's Portfolio",
   description: "Portfolio landing page",
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

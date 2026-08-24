@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
-const ROTATE_STEP_DEG = 6;
+const ROTATE_DEG = 6;
+const STEP_VH = 75;
 
 export default function StackedCards({
   cards,
@@ -11,64 +12,89 @@ export default function StackedCards({
   cards: ReactNode[];
   title?: ReactNode;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
-  const steps = cards.length - 1;
+  const triggerRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container || steps <= 0) return;
+    let frame = 0;
 
-    let rafId: number;
-    let current = 0;
+    const update = () => {
+      frame = 0;
+      const viewportCenter = window.innerHeight / 2;
+      const entryDistance = window.innerHeight * 0.6;
+      const entryOffsetPx = window.innerHeight;
 
-    const tick = () => {
-      const rect = container.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const total = container.offsetHeight - vh;
-      const scrolled = -rect.top;
-      const p = total > 0 ? Math.min(Math.max(scrolled / total, 0), 1) : 0;
-      const target = p * steps;
+      cardRefs.current.forEach((cardEl, i) => {
+        if (!cardEl || i === 0) return;
 
-      current += (target - current) * 0.12;
-      if (Math.abs(target - current) < 0.001) current = target;
+        const trigger = triggerRefs.current[i];
+        if (!trigger) return;
 
-      setProgress(current);
-      rafId = requestAnimationFrame(tick);
+        const rect = trigger.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const delta = center - viewportCenter;
+        const progress = Math.min(1, Math.max(0, 1 - delta / entryDistance));
+
+        const rotateDeg = i % 2 === 1 ? ROTATE_DEG : -ROTATE_DEG;
+        const translateY = (1 - progress) * entryOffsetPx;
+
+        cardEl.style.transform = `translateY(${translateY}px) rotate(${rotateDeg}deg)`;
+      });
     };
 
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [steps]);
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, [cards.length]);
 
   return (
     <div
-      ref={containerRef}
       className="relative w-full"
-      style={{ height: `${cards.length * 100}vh` }}
+      style={{ height: `${cards.length * STEP_VH}vh` }}
     >
-      <div className="sticky top-0 h-screen flex flex-col gap-24 items-center justify-center">
+      <div className="sticky top-13 flex flex-col gap-24 items-center pb-13">
         {title}
         <div className="relative w-full">
-          {cards.map((card, i) => {
-            const depth = Math.max(0, progress - i);
-            const opacity = Math.min(Math.max(progress - i + 1, 0), 1);
-            return (
-              <div
-                key={i}
-                className={i === 0 ? "" : "absolute inset-0"}
-                style={{
-                  transform: `rotate(${depth * ROTATE_STEP_DEG}deg)`,
-                  opacity,
-                  zIndex: i + 1,
-                }}
-              >
-                {card}
-              </div>
-            );
-          })}
+          {cards.map((card, i) => (
+            <div
+              key={i}
+              ref={(el) => {
+                cardRefs.current[i] = el;
+              }}
+              className={i === 0 ? "" : "absolute inset-0"}
+              style={{
+                zIndex: i + 1,
+                willChange: "transform",
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+              }}
+            >
+              {card}
+            </div>
+          ))}
         </div>
       </div>
+
+      {cards.map((_, i) => (
+        <div
+          key={i}
+          ref={(el) => {
+            triggerRefs.current[i] = el;
+          }}
+          className="absolute w-full"
+          style={{ top: `${i * STEP_VH}vh`, height: `${STEP_VH}vh` }}
+        />
+      ))}
     </div>
   );
 }

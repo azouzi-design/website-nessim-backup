@@ -120,7 +120,7 @@ export default function Services() {
     <section id="services" className="flex flex-col items-center">
       <div className="flex flex-col gap-16 items-center max-w-[1000px] w-full px-5 py-13">
         <h2 className="font-heading text-h2 text-foreground text-center whitespace-pre-line">
-          {"Services but we can have a more\nmeaningful title here"}
+          {"Four services, and one\ndeal where you get it all"}
         </h2>
 
         <div className="flex flex-col gap-2 items-center w-full">
@@ -156,7 +156,7 @@ export default function Services() {
                 together
               </p>
             </div>
-            <RevealOnView delayMs={400} variant="bounce" className="relative w-full">
+            <RevealOnView delayMs={400} variant="bounce" className="relative w-full flex-1">
               <SpinningGlobe positionClassName="top-[-28px]" />
             </RevealOnView>
           </div>

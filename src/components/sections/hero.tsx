@@ -46,7 +46,11 @@ export default function Hero() {
               <div className="flex flex-col items-center gap-y-2 font-heading text-h1 text-foreground text-center">
                 <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
                   <span>Nessim</span>
-                  <RevealOnView className="inline-block h-11 w-[71px] overflow-hidden rounded-full align-middle">
+                  <RevealOnView
+                    variant="spring"
+                    delayMs={0}
+                    className="inline-block h-11 w-[71px] overflow-hidden rounded-full align-middle"
+                  >
                     <Image
                       src="/hero/avatar.png"
                       alt=""
@@ -59,13 +63,17 @@ export default function Hero() {
                 </div>
                 <span>partner that helps founders</span>
               </div>
-              <div className="flex gap-1 items-center justify-center flex-wrap">
+              <div className="flex gap-2 items-center justify-center flex-wrap">
                 {pills.map((pill, index) => (
-                  <RevealOnView key={pill.label} delayMs={index * 150}>
+                  <RevealOnView
+                    key={pill.label}
+                    variant="spring"
+                    delayMs={150 + index * 150}
+                  >
                     <div className="flex gap-2 h-13 items-center justify-center px-4 rounded-full bg-background shadow-sm">
                       <Image src={pill.icon} alt="" width={32} height={32} />
                       <div className="flex items-center justify-center pb-2">
-                        <span className="font-heading text-[44px] leading-[1.1] tracking-[-0.88px] font-semibold text-foreground">
+                        <span className="font-heading text-[40px] leading-[1.1] tracking-[-0.88px] font-semibold text-foreground">
                           {pill.label}
                         </span>
                       </div>

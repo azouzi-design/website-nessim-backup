@@ -64,7 +64,7 @@ export default function Projects() {
         <StackedCards
           title={
             <h2 className="font-heading text-h2 text-foreground text-center whitespace-pre-line">
-              {"Projects but we can have a more\nmeaningful title here"}
+              {"Projects that made it\nout of the slide deck"}
             </h2>
           }
           cards={[<ProjectCard key={0} />, <ProjectCard key={1} />, <ProjectCard key={2} />, <ProjectCard key={3} />]}
