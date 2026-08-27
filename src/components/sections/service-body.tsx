@@ -224,7 +224,9 @@ function AudienceSection({
         {disqualifier && (
           <div className="flex flex-col gap-4 items-center text-center max-w-[560px]">
             <p className="text-body text-foreground">{disqualifier.note}</p>
-            <p className="text-body text-foreground-secondary">{disqualifier.explanation}</p>
+            {disqualifier.explanation && (
+              <p className="text-body text-foreground-secondary">{disqualifier.explanation}</p>
+            )}
             <CtaLink href={DM_HREF} label={disqualifier.ctaLabel} variant="secondary" />
           </div>
         )}

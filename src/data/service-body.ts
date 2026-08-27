@@ -17,7 +17,7 @@ export type ServiceProcessStep = {
 
 export type ServiceDisqualifier = {
   note: string;
-  explanation: string;
+  explanation?: string;
   ctaLabel: string;
 };
 
