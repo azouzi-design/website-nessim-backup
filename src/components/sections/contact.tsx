@@ -40,7 +40,7 @@ export default function Contact() {
                 Send a DM
               </span>
             </a>
-            <CopyEmailButton email="nessimbozrati@gmail.com" />
+            <CopyEmailButton email="bozratin@gmail.com" />
             <a
               href="https://www.linkedin.com/in/nessim-bozrati/"
               target="_blank"
@@ -82,12 +82,13 @@ export default function Contact() {
             </div>
             <div className="flex flex-col gap-6 h-[200px] max-mobile:h-auto max-mobile:py-8 items-center justify-center p-6 w-full bg-foreground">
               <p className="font-heading text-h3 text-background text-center max-w-[786px]">
-                Nessim helped us find a clearer voice for the brand. The
-                refresh made everything feel warmer, more consistent and
-                easier for customers to understand.
+                Nessim&apos;s instinct for marketing and growth is natural, and it
+                shows in the results. Trustworthy, dependable, and someone who
+                genuinely moves the needle, if you&apos;re thinking about working
+                with him, do it.
               </p>
               <p className="text-body text-background-secondary whitespace-nowrap max-mobile:whitespace-normal max-mobile:text-center">
-                Sabreen Morsey — CEO @ Farinas Marketing Services
+                Felipe Millán — CMO @ Cynoia
               </p>
             </div>
           </div>

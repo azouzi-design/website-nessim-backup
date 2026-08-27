@@ -7,6 +7,8 @@
   --foreground-secondary: #333333;
   --stroke: #ebebeb;
   --primary-blue: #0a66c2;
+  --primary-green: #0ac247;
+  --primary-red: #c20a0a;
 
   --accent-bg-purple: #eddcf9;
   --accent-bg-teal: #bef4eb;
@@ -31,6 +33,8 @@
   --color-foreground-secondary: var(--foreground-secondary);
   --color-stroke: var(--stroke);
   --color-primary-blue: var(--primary-blue);
+  --color-primary-green: var(--primary-green);
+  --color-primary-red: var(--primary-red);
 
   --color-accent-bg-purple: var(--accent-bg-purple);
   --color-accent-bg-teal: var(--accent-bg-teal);
@@ -102,6 +106,21 @@
   60% {
     opacity: 1;
     transform: scale(1.02) translateY(-1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes spring-pop-soft {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(2px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.008) translateY(-0.5px);
   }
   100% {
     opacity: 1;

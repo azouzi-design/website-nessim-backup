@@ -1,10 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import SpinningGlobe from "@/components/spinning-globe";
 import RevealOnView from "@/components/reveal-on-view";
+import { services as serviceData, type ServiceSlug } from "@/data/services";
 
 type Chip = { label: string; className: string };
 
-type Service = {
+type ServiceCardData = {
+  slug: ServiceSlug;
   title: string;
   description: string;
   illustration: string;
@@ -12,60 +15,45 @@ type Service = {
   chips: Chip[];
 };
 
-const services: Service[] = [
-  {
-    title: "GTM Foundation",
-    description:
-      "Work 1-on-1 with me as your GTM co-pilot to build and execute your GTM foundation",
+const presentation: Record<
+  Exclude<ServiceSlug, "growth-partner">,
+  { illustration: string; illustrationWidth: number }
+> = {
+  "gtm-foundation": {
     illustration: "/services/illustration-gtm-foundation.svg",
     illustrationWidth: 103,
-    chips: [
-      { label: "$1,800", className: "bg-stroke text-foreground" },
-      { label: "Growth", className: "bg-accent-bg-purple text-foreground" },
-      { label: "GTM", className: "bg-accent-bg-teal text-foreground" },
-      { label: "Sales", className: "bg-accent-bg-green text-foreground" },
-    ],
   },
-  {
-    title: "Campaign Direction",
-    description:
-      "Plan and Execute creative campaigns for launches, seasonal promotions, product pr features drops and announcements",
+  "campaign-direction": {
     illustration: "/services/illustration-campaign-direction.svg",
     illustrationWidth: 121,
-    chips: [
-      { label: "$1,200", className: "bg-stroke text-foreground" },
-      { label: "Marketing", className: "bg-accent-bg-blue text-foreground" },
-      { label: "Sales", className: "bg-accent-bg-green text-foreground" },
-      { label: "Content", className: "bg-accent-bg-amber text-foreground" },
-    ],
   },
-  {
-    title: "Content Strategy",
-    description:
-      "A content system built around your business goals — not just a calendar, a machine that runs (social, emails and more)",
+  "content-strategy": {
     illustration: "/services/illustration-content-strategy.svg",
     illustrationWidth: 97,
-    chips: [
-      { label: "$900", className: "bg-stroke text-foreground" },
-      { label: "Content", className: "bg-accent-bg-amber text-foreground" },
-      { label: "Marketing", className: "bg-accent-bg-blue text-foreground" },
-      { label: "Branding", className: "bg-accent-bg-red text-foreground" },
-    ],
   },
-  {
-    title: "Personal Branding",
-    description:
-      "Work 1-on-1 with me to build your personal brand system, positioning, story, and content that runs without you",
+  "personal-branding": {
     illustration: "/services/illustration-personal-branding.svg",
     illustrationWidth: 140,
-    chips: [
-      { label: "$800", className: "bg-stroke text-foreground" },
-      { label: "Branding", className: "bg-accent-bg-red text-foreground" },
-      { label: "Marketing", className: "bg-accent-bg-blue text-foreground" },
-      { label: "Content", className: "bg-accent-bg-amber text-foreground" },
-    ],
   },
-];
+};
+
+const services: ServiceCardData[] = serviceData
+  .filter((service): service is typeof service & { slug: Exclude<ServiceSlug, "growth-partner"> } =>
+    service.slug !== "growth-partner"
+  )
+  .map((service) => ({
+    slug: service.slug,
+    title: service.title,
+    description: service.description,
+    illustration: presentation[service.slug].illustration,
+    illustrationWidth: presentation[service.slug].illustrationWidth,
+    chips: [
+      { label: service.price, className: "bg-stroke text-foreground" },
+      ...service.chips,
+    ],
+  }));
+
+const bundle = serviceData.find((service) => service.slug === "growth-partner")!;
 
 function ChipRow({ chips }: { chips: Chip[] }) {
   return (
@@ -82,9 +70,12 @@ function ChipRow({ chips }: { chips: Chip[] }) {
   );
 }
 
-function ServiceCard({ service, delayMs = 0 }: { service: Service; delayMs?: number }) {
+function ServiceCard({ service, delayMs = 0 }: { service: ServiceCardData; delayMs?: number }) {
   return (
-    <div className="group flex flex-col gap-10 items-center px-8 py-6 rounded-xl bg-background cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md hover:opacity-80 active:-translate-y-0.5 active:opacity-50">
+    <Link
+      href={`/services/${service.slug}`}
+      className="group flex flex-col gap-10 items-center px-8 py-6 rounded-xl bg-background cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md hover:opacity-80 active:-translate-y-0.5 active:opacity-50"
+    >
       <ChipRow chips={service.chips} />
       <RevealOnView delayMs={delayMs} variant="bounce">
         <Image
@@ -111,7 +102,7 @@ function ServiceCard({ service, delayMs = 0 }: { service: Service; delayMs?: num
           {service.description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -126,21 +117,24 @@ export default function Services() {
         <div className="flex flex-col gap-2 items-center w-full">
           <div className="grid grid-cols-2 max-mobile:grid-cols-1 gap-2 w-full">
             {services.map((service, index) => (
-              <ServiceCard key={service.title} service={service} delayMs={index * 100} />
+              <ServiceCard key={service.slug} service={service} delayMs={index * 100} />
             ))}
           </div>
 
-          <div className="group flex flex-col gap-5 items-center w-full h-[252px] px-4 py-6 rounded-xl bg-background overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md hover:opacity-80 active:-translate-y-0.5 active:opacity-50">
+          <Link
+            href={`/services/${bundle.slug}`}
+            className="group flex flex-col gap-5 items-center w-full h-[252px] px-4 py-6 rounded-xl bg-background overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md hover:opacity-80 active:-translate-y-0.5 active:opacity-50"
+          >
             <ChipRow
               chips={[
-                { label: "$2,400", className: "bg-stroke text-foreground" },
-                { label: "Bundle", className: "bg-foreground text-background" },
+                { label: bundle.price, className: "bg-stroke text-foreground" },
+                ...bundle.chips,
               ]}
             />
             <div className="flex flex-col gap-2 items-center">
               <div className="flex gap-1 items-center justify-center">
                 <h4 className="font-heading text-h4 text-foreground whitespace-nowrap">
-                  Growth Partner
+                  {bundle.title}
                 </h4>
                 <Image
                   src="/services/icon-arrow-right-up-circle.svg"
@@ -151,15 +145,13 @@ export default function Services() {
                 />
               </div>
               <p className="text-body text-foreground-secondary text-center max-w-[494px]">
-                I join as your embedded growth partner — GTM, branding,
-                content, campaigns — whatever the business needs, built
-                together
+                {bundle.description}
               </p>
             </div>
             <RevealOnView delayMs={400} variant="bounce" className="relative w-full flex-1">
               <SpinningGlobe positionClassName="top-[-28px]" />
             </RevealOnView>
-          </div>
+          </Link>
         </div>
       </div>
     </section>

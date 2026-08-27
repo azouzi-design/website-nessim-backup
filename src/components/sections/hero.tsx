@@ -36,7 +36,7 @@ export default function Hero() {
       id="home"
       className="relative flex flex-col items-center overflow-hidden"
     >
-      <SpinningGlobe className="max-tablet:scale-[0.75]" />
+      <SpinningGlobe className="max-tablet:scale-[0.75] max-mobile:hidden" />
       <div className="relative flex flex-col gap-16 items-center max-w-[1000px] w-full pb-13 px-5">
         <Navbar />
 
@@ -144,12 +144,13 @@ export default function Hero() {
 
             <div className="flex flex-col gap-6 items-center justify-center h-[200px] max-mobile:h-auto max-mobile:py-8 w-full p-6 rounded-xl bg-background">
               <p className="font-heading text-h3 text-foreground text-center max-w-[786px]">
-                Nessim helped us find a clearer voice for the brand. The
-                refresh made everything feel warmer, more consistent and
-                easier for customers to understand.
+                Nessim helped us think beyond the product, sharper
+                positioning, real growth strategy, and a venture built to
+                scale. His insights gave the whole team more clarity and
+                confidence moving forward.
               </p>
               <p className="text-body text-foreground-secondary whitespace-nowrap max-mobile:whitespace-normal max-mobile:text-center">
-                Sabreen Morsey — CEO @ Farinas Marketing Services
+                Aabigail Alabi — CEO & Founder @ UpNorth Academy
               </p>
             </div>
 
